@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+     <!-- CSS -->
+     <link rel="stylesheet" href="./css/main.css" />
+     <link rel="stylesheet" href="./css/checkout.css" />
+     <link rel="stylesheet" href="./css/about.css" />
+     <link
+       href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css "
+       rel="stylesheet "
+       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6 "
+       crossorigin="anonymous "
+     />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet</title>
+
+    <script>
+      function runCode() {
+          data = []
+          fetch("/response", {
+              method: "GET",
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+          })
+          .then((res) => res.text())
+          .then((res) => {
+              const div = document.createElement('div');
+              div.innerHTML = res;
+
+              document.body.appendChild(div);
+
+              // if needed full page update
+              document.body.innerHTML = res;
+          });
+      }
+  </script>
+
+  </head>
+  <body>
+      
+    <main class="app__container">
+        <nav>
+            <div class="nav-wrapper" style="background-color:white">
+                <div>
+             
+                <a href='' class="left"><img src="../image/patlogo.png" alt="logo" class="logo"/></a>
+                </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="./">Dashboard</a>
+                <a href="./main.html">Services</a>
+                <button class="btn-nav" onclick="allTransaction()">Transactions</button>
+                <a href="./wallet.html">Wallet</a>
+                <button class="btn-nav" onclick="walletFunding()">Wallet Funding</button>
+                <a href="#">Profile</a>
+                <form action="/logout" method="GET"></form><button>Logout</button></form>
+              </div>
+              
+              <span onclick="openNav()"><i class="fa fa-bars"></i></span>
+              <div id="main">
+              </div>
+        </nav>
+        <div class="subnav">
+          <h3>Welcome Back</h3>
+         
+        </div>
+        <section style="margin-top:90px">
+        <div class="card home-card">
+            <div class="card-header">
+             <i class="fa fa-money-bill"></i>
+             </div>
+             <div class="card-content" id="balance">
+               <!-- <div>
+                 <h5><strong style="color:black";>N674.34</strong></h5>
+                 <p>Wallet Balance</p>
+                 <p>Previous Balance : N2,702.00</p>
+                 </div> -->
+             </div>   
+             </div>
+
+
+             <div class="card home-card">
+            <div class="card-header">
+    
+             </div>
+             <div class="card-content" id="todayTotal">
+                
+             </div>   
+             </div>
+
+             <div class="card home-card">
+            <div class="card-header">
+             
+             </div>
+             <div class="card-content">
+                 <h5><strong style= "color:black",>N0.00</strong></h5>
+                 <p>Api Transactions</p>
+             </div>   
+             </div>
+             <form>
+                <div class="card home-card">
+                  <div class="card-content">
+                      <p>Buy Data</p>
+                          </div>
+                         
+                <button class="btn-land" onClick="initData()">Buy Data</button>
+                </div>
+              </form>
+              <table class="card home-card-table">
+                  <div >
+                <caption class="sub-btns">
+                    All transaction
+                    <button class="btn" onClick="allTransaction()">View more</button>
+                </caption>
+                
+                </div>
+                <tr class="table">
+                  <th style="padding: 10px;">REFERENCE</th>
+                  <th style="padding: 10px;">DESCRIPTION</th>
+                  <th style="padding: 10px;">STATUS</th>
+                  <th style="padding: 10px;">ACTION</th>
+                </tr>
+                <tr class="transactionTable">
+                  
+                </tr>
+              </table>
+        </div>
+    </section>
+    </main>
+
+    <script>
+
+    //   function makePayment() {
+    //     FlutterwaveCheckout({
+    //       public_key: "FLWPUBK-1199deed2ab876b2bc5f8394ef433b59-X",
+    //       tx_ref: "hooli-tx-1920bbtyt",
+    //       amount: 1000,
+    //       currency: "NGN",
+    //       country: "NG",
+    //       payment_options: "card",
+
+    //       // specified redirect URL
+    //       redirect_url: "http://localhost:4001/response",
+
+    //       // use customer details if user is not logged in, else add user_id to the request
+    //       customer: {
+    //         email: "test@gmail.com",
+    //         name: "Patrick",
+    //       },
+    //       callback: function (data) {
+    //         console.log(data);
+    //       },
+    //       onclose: function () {
+    //         // close modal
+    //       },
+    //       customizations: {
+    //         title: "Flutterwave",
+    //         description: "Flutterwave Payment",
+    //         logo: "https://cdn.iconscout.com/icon/premium/png-256-thumb/payment-2193968-1855546.png",
+    //       },
+    //     });
+    //   }
+    </script>
+    <!-- <script src="https://checkout.flutterwave.com/v3.js"></script> -->
+  </body>
+<!-- JAVASCRIPT SCRIPTS -->
+<script src="./js/app.js"></script>
+
+<!-- DATA BUNDLE SERVICE -->
+<script src="./js/dataservice/dataService.js"></script>
+<script src="./js/dataservice/airtel/airtelDataBank.js"></script>
+<script src="./js/dataservice/mtn/mtnDataBank.js"></script>
+<script src="./js/dataservice/glo/gloDataBank.js"></script>
+
+<!-- AIRTIME SERBVICE -->
+<script src="./js/airtimeService/airtimeService.js"></script>
+<script src="./js/transactionService/transactionService.js"></script>
+
+<script src="./js/allTransaction.js"></script>
+<script src="./js/sideNav.js"></script>
+<script src="./js/walletFunding.js"></script>
+<script src="./js/updateWallet.js"></script>
+<script src="./js/subNav.js"></script>
+
+<!-- PAYMENT SCRIPTS  -->
+<script src="./js/checkouts/dataBundleCheckout.js"></script>
+<script src="./js/checkouts/airtimeCheckout.js"></script>
+<script src="./js/checkouts/transactionCheckout.js"></script>
+<script src="./js/bin.js"></script>
+
+<!-- EMAIL CHECKOUT CALLBACK FUNCTION -->
+<script src="./js/receiptEmail/receiptEmail.js"></script>
+
+<!-- FLUTTERWAVE SCRIPTS -->
+<script src="./js/flutterwave/payment.js"></script>
+<script src="./js/flutterwave/airtimePayment.js"></script>
+<script src="./js/flutterwave/transactionPayment.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+</html>
